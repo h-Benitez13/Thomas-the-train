@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Thomas the train</title>
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!-- site to see what is being pushed to the firebase  -->
+    <!-- https://thomas-the-train-e852a.firebaseio.com/ -->
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid text-center">
+                <div class="jumbotron-title">
+                    <h1 class="display-4">
+                        <STRONG>THOMAS THE MOOOOOOFUCKEN TRAIN </STRONG>
+                    </h1>
+                    <br>
+                    <h3 class= "lead">
+                        All aboard the lit-train. 
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- current employees -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Current Train Schedule
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Desitination</th>
+                                <th scope="col">Frequency (min) </th>
+                                <th scope="col">Next Arrival </th>
+                                <th scope="col">Minutes Away</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- new row -->
+                                    <td>The Polar Express</td>
+                                    <td>North Pole</td>
+                                    <td>indefinitely</td>
+                                    <td>12:00pm</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Form -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Add Train
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label for="TrainName">Train Name</label>
+                            <input type="text" class="form-control" id="name-input" placeholder="Thomas the Train">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Destination">Destination</label>
+                            <input type="text" class="form-control" id="destination-input" placeholder="Where did thomas go?">
+                        </div>
+                        <div class="form-group">
+                            <label for="FirstTrainTime">First Train Time (HH:mm- military time)</label>
+                            <input type="time" class="form-control" id="time-input" placeholder="03:30">
+                        </div>
+                        <div class="form-group">
+                            <label for="Frequency">Frequency (min)</label>
+                            <input type="number" class="form-control" id="freq-input" placeholder="0">
+                        </div>
+                        <br>
+                        <div class="form-check">
+                            <button type="submit" id="train-add" class="btn btn-primary btn-lg" style="float: right; margin-top: 5px; margin-bottom: 10px;">Submit</button>
+                        </div>
+                        <br>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/javascript/train.js"></script>
+
+   
+
+</body>
+
+</html>
