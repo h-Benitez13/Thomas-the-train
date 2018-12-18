@@ -5,7 +5,7 @@ var config = {
     authDomain: "thomas-the-train-e852a.firebaseapp.com",
     databaseURL: "https://thomas-the-train-e852a.firebaseio.com",
     projectId: "thomas-the-train-e852a",
-    storageBucket: "",
+    storageBucket: "thomas-the-train-e852a.appspot.com",
     messagingSenderId: "487361585735"
 };
 
@@ -16,14 +16,14 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 //   capture the button click 
-$('#train-add').click(function () {
+$('#train-add').click(function (event) {
     // do not want it to repeat
     event.preventDefault();
     // grab the values form text boxes
     var name = $('#name-input').val().trim();
     var destination = $('#destination-input').val().trim();
     var time = $('#time-input').val().trim();
-    var frequency = $('#frequency-input').val();
+    var frequency = $('#freq-input').val();
 
     // giving my databaes labels for the inputs
     // using .push() to not reset one set of data but a list of 
@@ -31,7 +31,9 @@ $('#train-add').click(function () {
         name: name,
         destination: destination,
         time: time,
-        frequency: frequency
+        frequency: frequency,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+
     });
     // firebase watcher.on('child_added')
     // database.ref().on('')
@@ -39,10 +41,10 @@ $('#train-add').click(function () {
     database.ref().on('child_added', function (snapshot) {
         var snapshot = snapshot.val();
         // logging the last input 
-        console.log(snapshot);
+        console.log(snapshot.name);
 
         // changing the html to reflect the input
-        $('tbody').append('<tr> <td>' + snapshot.name + '</td>' +
+        $('#correct').append('<tr> <td>' + snapshot.name + '</td>' +
             '<td>' + snapshot.destination + '</td>' +
             '<td>' + snapshot.time + '</td>' +
             '<td>' + snapshot.frequency + '</td>' +
