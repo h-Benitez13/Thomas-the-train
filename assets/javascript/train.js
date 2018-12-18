@@ -30,8 +30,8 @@ $('#train-add').click(function (event) {
     database.ref().push({
         name: name,
         destination: destination,
-        time: time,
         frequency: frequency,
+        time:time,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
 
     });
