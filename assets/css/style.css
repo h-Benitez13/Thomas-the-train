@@ -1,9 +1,18 @@
 .jumbotron{
+    background-image: url('../images/back.png');
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
     background-color:black;
     color: white;
     width: 100%;
+}
 
-
+.block {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .card-header{

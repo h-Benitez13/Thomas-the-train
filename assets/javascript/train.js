@@ -31,29 +31,80 @@ $('#train-add').click(function (event) {
         name: name,
         destination: destination,
         frequency: frequency,
-        time:time,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        time: time,
 
     });
     // firebase watcher.on('child_added')
     // database.ref().on('')
     // stroing the snapshot.val() in a variable for convenience
-    database.ref().on('child_added', function (snapshot) {
-        var snapshot = snapshot.val();
-        // logging the last input 
-        console.log(snapshot.name);
+    database.ref().on('child_added', function (snap) {
+        // var snap = snapshot.val();
+        // // logging the last input 
+        // console.log(snap.name);
+
+
+        // variable for firstTrainTime to manipulate
+        // variable for frequency to manipulate
+        // variable for ACTUAL time for moment.js
+        var time = snap.val().time;
+        var frequency = snap.val().frequency;
+        var changeUp = moment();
+
+        // current TIME
+        console.log(changeUp);
+        console.log("CURRENT TIME: " + moment(changeUp).format("hh:mm"));
+
+
+        // First Time (pushed back 1 year to make sure it comes before current time)
+        var firstTimeConverted = moment(time, "HH:mm").subtract(1, "years");
+        // console.log(firstTimeConverted);
+
+        // Difference between the times
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+        // console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        // Time apart (remainder)
+        var tRemainder = diffTime % frequency;
+        console.log('THIS IS THE: '+ tRemainder);
+
+        // Minute Until Train
+        var tMinutesTillTrain = frequency - tRemainder;
+        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+        // Next Train
+        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+        var nextTrainForm = moment(nextTrain).format("hh:mm a");
+        console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
         // changing the html to reflect the input
-        $('#correct').append('<tr> <td>' + snapshot.name + '</td>' +
-            '<td>' + snapshot.destination + '</td>' +
-            '<td>' + snapshot.time + '</td>' +
-            '<td>' + snapshot.frequency + '</td>' +
-            '</tr>');
+        $('#correct').append('<tr> <td>' + snap.val().name + '</td>' +
+            '<td>' + snap.val().destination + '</td>' +
+            // '<td>' + snap.time + '</td>' +
+            // '<td>' + snap.val().time + '</td>' +
+            '<td>' + nextTrainForm + '</td>' +
+            '<td>' + snap.val().frequency + '</td>' +
+            // '<td>' + tRemainder + '</td>' +
+            '<td>' + tMinutesTillTrain + " min"+ '</td>'+
+            '</tr>' );
+     
+
+
+
+
+
 
 
     }, function (errorObject) {
         console.log("the read failed: " + errorObject);
 
+        
+
     });
+
+    $('#correct').click(function(event){
+        event.preventDefault();
+        $('<td>').empty();
+    })
+
 
 });   

@@ -7,10 +7,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-    
+        crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    
+
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
     <!-- site to see what is being pushed to the firebase  -->
@@ -20,15 +20,15 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row block">
             <div class="jumbotron jumbotron-fluid text-center">
                 <div class="jumbotron-title">
                     <h1 class="display-4">
                         <STRONG>THOMAS THE MOOOOOOFUCKEN TRAIN </STRONG>
                     </h1>
                     <br>
-                    <h3 class= "lead">
-                        All aboard the lit-train. 
+                    <h3 class="lead">
+                        All aboard the lit-train.
                     </h3>
                 </div>
             </div>
@@ -59,7 +59,15 @@
                                     <td>North Pole</td>
                                     <td>12:00pm</td>
                                     <td>indefinitely</td>
-                                    <td>5</td>
+                                    <td>5 min</td>
+                                </tr>
+                                <tr>
+                                    <!-- new row -->
+                                    <td>Soul Train</td>
+                                    <td>Funky Town</td>
+                                    <td>2:35pm</td>
+                                    <td>3</td>
+                                    <td>1 min</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <label for="FirstTrainTime">First Train Time (HH:mm- military time)</label>
-                            <input type="time" class="form-control" id="time-input" placeholder="03:30">
+                            <input type="text" class="form-control" id="time-input" placeholder="03:30">
                         </div>
                         <div class="form-group">
                             <label for="Frequency">Frequency (min)</label>
@@ -112,9 +120,11 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/javascript/train.js"></script>
 
-   
+
+
 
 </body>
 
