@@ -52,6 +52,7 @@ $('#train-add').click(function (event) {
 
         // current TIME
         console.log(changeUp);
+        $('.time').html(changeUp);
         console.log("CURRENT TIME: " + moment(changeUp).format("hh:mm"));
 
 
@@ -65,7 +66,7 @@ $('#train-add').click(function (event) {
 
         // Time apart (remainder)
         var tRemainder = diffTime % frequency;
-        console.log('THIS IS THE: '+ tRemainder);
+        console.log('THIS IS THE: ' + tRemainder);
 
         // Minute Until Train
         var tMinutesTillTrain = frequency - tRemainder;
@@ -79,14 +80,12 @@ $('#train-add').click(function (event) {
         // changing the html to reflect the input
         $('#correct').append('<tr> <td>' + snap.val().name + '</td>' +
             '<td>' + snap.val().destination + '</td>' +
-            // '<td>' + snap.time + '</td>' +
-            // '<td>' + snap.val().time + '</td>' +
             '<td>' + nextTrainForm + '</td>' +
             '<td>' + snap.val().frequency + '</td>' +
-            // '<td>' + tRemainder + '</td>' +
-            '<td>' + tMinutesTillTrain + " min"+ '</td>'+
-            '</tr>' );
-     
+            '<td>' + tMinutesTillTrain + " min" + '</td>' +
+            '</tr>'
+        );
+
 
 
 
@@ -97,14 +96,11 @@ $('#train-add').click(function (event) {
     }, function (errorObject) {
         console.log("the read failed: " + errorObject);
 
-        
+
 
     });
 
-    $('#correct').click(function(event){
-        event.preventDefault();
-        $('<td>').empty();
-    })
+
 
 
 });   
